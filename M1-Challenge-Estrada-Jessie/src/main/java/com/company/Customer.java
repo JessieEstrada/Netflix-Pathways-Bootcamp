@@ -26,6 +26,7 @@ public class Customer {
     }
 
     public int getBalance() {//update this
+        // Here I iterate through each charge in the account and add them up to a total balance
         int totalBalance = 0;
         for (int i = 0; i < charges.size(); i++){
             totalBalance += charges.get(i).getCharge();
@@ -39,8 +40,8 @@ public class Customer {
     }
 
     @Override
-    public String toString() {
-        //String allInfo = id + "\n" + name + "\n" + getBalance();
+    public String toString() {//update this
+        // .toString() method will format a customer object as a String.
         return "Customer ID: " + id + " | Name: " + name + " | Balance: " + getBalance();
     }
 }

@@ -27,16 +27,21 @@ public class Main {
     );
 
     public static void main(String[] args) {
-        //I need to store my customerList into a List<Customer>
+        // I need to store my customerList into a List<Customer>
         List<Customer> customerList = new ArrayList<>();
 
-
+        // For loop that will iterate through List<String[]> customerData
         for (int i = 0; i < customerData.size(); i++) {
+            // These are starting variables and instantiated
+            // objects for each String[]
             int id = 0;
             String name = null;
-            List<AccountRecord> charges = new ArrayList<>();
             AccountRecord accountRecord = new AccountRecord();
             Customer currentCustomer = new Customer();
+
+            // In this for loop, I go through each individual
+            // String[] in the customerData list and separate
+            // them by ID, Name, and Account Record
             for (int j = 0; j < 4; j++) {
                 String[] current = customerData.get(i);
                 if (j == 0) {
@@ -55,33 +60,34 @@ public class Main {
 
             }
 
+            // Here I looped through my customer list to verify if the current customer is or isn't already in the list.
             boolean found = false;
             for (int k = 0; k < customerList.size(); k++) {
+                // If customer is already in the customer list, I simply add an account record to their charges
                 if (currentCustomer.getId() == customerList.get(k).getId()) {
                     customerList.get(k).getCharges().add(accountRecord);
                     found = true;
                     break;
                 }
             }
-            if(found == false){
-                customerList.add(currentCustomer);
-            }
+            // If customer is new in the list, I add them into the list
+            if(found == false){customerList.add(currentCustomer);}
         }
-
-
+        // Here, I loop through my list of Customers
+        // and print out Positive accounts
         System.out.println("Positive accounts:");
         for(int i = 0; i < customerList.size(); i++){
             if(customerList.get(i).getBalance() > 0){
                 System.out.println(customerList.get(i).toString());
             }
         }
-
+        // Here, I loop through my list of Customers
+        // and print out Negative accounts
         System.out.println("\nNegative accounts:");
         for(int i = 0; i < customerList.size(); i++){
             if(customerList.get(i).getBalance() < 0){
                 System.out.println(customerList.get(i).toString());
             }
         }
-
     }
 }
