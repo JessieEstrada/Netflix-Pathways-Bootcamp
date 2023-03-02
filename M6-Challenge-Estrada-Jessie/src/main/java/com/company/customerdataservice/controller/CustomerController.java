@@ -45,8 +45,8 @@ public class CustomerController {
         } else {return null;}
     }
 
-    // Find customer records by state
-    @GetMapping("/customers/state/{state}") //filter customers in that state
+    // Find/filter customer records by state
+    @GetMapping("/customers/state/{state}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<Customer> getCustomerByState(@PathVariable String state){
         return repo.findAllByState(state);
