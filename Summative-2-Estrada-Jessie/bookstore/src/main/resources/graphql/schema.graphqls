@@ -1,0 +1,49 @@
+#-------------------------------------------------------
+
+# GraphQL Schema for author, book, and publisher
+
+# Authors: Jessie Estrada and Zulymar García
+
+#--------------------------------------------------------
+
+type Author {
+    id: ID
+    firstName: String!
+    lastName: String!
+    street: String!
+    city:String!
+    state:String!
+    postalCode:String!
+    phone:String!
+    email:String!
+    books:[Book]
+}
+
+type Book {
+    id:ID
+    isbn:String
+    title:String
+    author: Author
+    publisher: Publisher
+    publishDate:String
+    price:Float
+}
+
+type Publisher {
+    id: ID
+    name: String!
+    street: String!
+    city:String!
+    state:String!
+    postalCode:String!
+    phone:String!
+    email:String!
+    books:[Book]
+}
+
+# Queries for finding author by ID, publisher by ID, and book by ID
+type Query{
+    findAuthorById(id:ID): Author
+    findPublisherById(id:ID): Publisher
+    findBookById(id:ID): Book
+}
