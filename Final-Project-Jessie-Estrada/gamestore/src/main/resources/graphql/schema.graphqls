@@ -1,0 +1,138 @@
+type Console{
+    consoleId:ID!
+    model: String!
+    manufacturer: String!
+    memoryAmount: String!
+    processor: String!
+    price: Float!
+    quantity: Int!
+
+}
+
+type Game{
+    GameId: ID!
+    title: String!
+    esrbRating:String!
+    description:String!
+    price:Float!
+    studio:String!
+    quantity:Int!
+}
+
+type Query{
+    findAllGames: [Game]
+    findGameById(id: Int): Game
+    findGameByTitle(title: String): [Game]
+    findGameByEsrb(esrb: String): [Game]
+    findGameByStudio(studio: String): [Game]
+
+    findAllConsoles: [Console]
+    findConsoleById(consoleId: ID): Console
+    findConsoleByManufacturer(manufacturer: String): [Console]
+
+
+}
+
+schema {
+    query: Query
+}
+
+#Use this Graph QLS queries to test the functions
+#query FindAllGames {
+#    findAllGames {
+#        GameId
+#        title
+#        esrbRating
+#        description
+#        price
+#        studio
+#        quantity
+#    }
+#}
+#query FindGameById {
+#    findGameById(id: 123) {
+#        GameId
+#        title
+#        esrbRating
+#        description
+#        price
+#        studio
+#        quantity
+#    }
+#}
+#query FindGameByTitle {
+#    findGameByTitle(title: "Super Mario Odyssey") {
+#        GameId
+#        title
+#        esrbRating
+#        description
+#        price
+#        studio
+#        quantity
+#    }
+#}
+#query FindGameByEsrb {
+#    findGameByEsrb(esrb: "E") {
+#        GameId
+#        title
+#        esrbRating
+#        description
+#        price
+#        studio
+#        quantity
+#    }
+#}
+#query FindGameByStudio {
+#    findGameByStudio(studio: "Nintendo") {
+#        GameId
+#        title
+#        esrbRating
+#        description
+#        price
+#        studio
+#        quantity
+#    }
+#}
+#
+#
+#Consoles
+#query FindAllConsoles {
+#findAllConsoles {
+#consoleId
+#model
+#manufacturer
+#memoryAmount
+#processor
+#price
+#quantity
+#}
+#}
+
+
+#query FindConsoleById {
+#findConsoleById(consoleId: "456") {
+#consoleId
+#model
+#manufacturer
+#memoryAmount
+#processor
+#price
+#quantity
+#}
+#}
+#
+
+
+#query FindConsoleByManufacturer {
+#findConsoleByManufacturer(manufacturer: "Sony") {
+#consoleId
+#model
+#manufacturer
+#memoryAmount
+#processor
+#price
+#quantity
+#}
+#}
+
+

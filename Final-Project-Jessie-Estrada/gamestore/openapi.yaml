@@ -1,0 +1,1006 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /tshirts:
+    get:
+      tags:
+        - tshirt-controller
+      operationId: getAllTshirts
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tshirt'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    put:
+      tags:
+        - tshirt-controller
+      operationId: updateExistingTshirt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tshirt'
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    post:
+      tags:
+        - tshirt-controller
+      operationId: createNewTshirt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tshirt'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Tshirt'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /games:
+    put:
+      tags:
+        - game-controller
+      operationId: updateGameInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game'
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    post:
+      tags:
+        - game-controller
+      operationId: addGameInformation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Game'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Game'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /consoles:
+    get:
+      tags:
+        - console-controller
+      operationId: getAllConsoles
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Console'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    put:
+      tags:
+        - console-controller
+      operationId: updateExistingConsole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Console'
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    post:
+      tags:
+        - console-controller
+      operationId: createNewConsole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Console'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Console'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /invoices:
+    get:
+      tags:
+        - invoice-controller
+      operationId: getAllInvoices
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    post:
+      tags:
+        - invoice-controller
+      operationId: createInvoice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceViewModel'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/InvoiceViewModel'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /tshirts/{id}:
+    get:
+      tags:
+        - tshirt-controller
+      operationId: getTshirt
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Tshirt'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    delete:
+      tags:
+        - tshirt-controller
+      operationId: deleteTshirt
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /tshirts/size/{size}:
+    get:
+      tags:
+        - tshirt-controller
+      operationId: GetTshirtsBySize
+      parameters:
+        - name: size
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tshirt'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /tshirts/color/{color}:
+    get:
+      tags:
+        - tshirt-controller
+      operationId: GetTshirtsByColor
+      parameters:
+        - name: color
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tshirt'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /invoices/{id}:
+    get:
+      tags:
+        - invoice-controller
+      operationId: getInvoiceById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /invoices/customer/{name}:
+    get:
+      tags:
+        - invoice-controller
+      operationId: getInvoiceByCustomerName
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /games/{id}:
+    get:
+      tags:
+        - game-controller
+      operationId: findGameInfoById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Game'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    delete:
+      tags:
+        - game-controller
+      operationId: deleteGameInfo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /games/Title/{title}:
+    get:
+      tags:
+        - game-controller
+      operationId: GetGameByTitle
+      parameters:
+        - name: title
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /games/Studio/{studio}:
+    get:
+      tags:
+        - game-controller
+      operationId: GetGameByStudio
+      parameters:
+        - name: studio
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /games/ESRB/{esrb}:
+    get:
+      tags:
+        - game-controller
+      operationId: GetGameByESRB
+      parameters:
+        - name: esrb
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /consoles/{id}:
+    get:
+      tags:
+        - console-controller
+      operationId: getConsoleById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Console'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+    delete:
+      tags:
+        - console-controller
+      operationId: deleteConsole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /consoles/manufacturers/{manufacturer}:
+    get:
+      tags:
+        - console-controller
+      operationId: getConsolesByManufacturer
+      parameters:
+        - name: manufacturer
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Console'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+  /allgameinfo:
+    get:
+      tags:
+        - game-controller
+      operationId: findAllGames
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CustomErrorResponse'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+components:
+  schemas:
+    CustomErrorResponse:
+      type: object
+      properties:
+        errorMsg:
+          type: string
+        status:
+          type: integer
+          format: int32
+        errorCode:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+    Tshirt:
+      required:
+        - color
+        - description
+        - price
+        - quantity
+        - size
+      type: object
+      properties:
+        gettShirtId:
+          type: integer
+          format: int32
+        size:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+          format: int32
+    Game:
+      required:
+        - description
+        - esrbRating
+        - price
+        - studio
+        - title
+      type: object
+      properties:
+        gameId:
+          type: integer
+          format: int32
+        title:
+          type: string
+        esrbRating:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        studio:
+          type: string
+        quantity:
+          minimum: 1
+          type: integer
+          format: int32
+    Console:
+      required:
+        - manufacturer
+        - memoryAmount
+        - model
+        - price
+        - processor
+        - quantity
+      type: object
+      properties:
+        consoleId:
+          type: integer
+          format: int32
+        model:
+          type: string
+        manufacturer:
+          type: string
+        memoryAmount:
+          type: string
+        processor:
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+          format: int32
+    InvoiceViewModel:
+      required:
+        - city
+        - itemId
+        - itemType
+        - name
+        - state
+        - street
+        - zipcode
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipcode:
+          type: string
+        itemType:
+          type: string
+        itemId:
+          type: integer
+          format: int32
+        unitPrice:
+          type: number
+        quantity:
+          minimum: 1
+          type: integer
+          format: int32
+        subtotal:
+          type: number
+        tax:
+          type: number
+        processingFee:
+          type: number
+        total:
+          type: number
+    Invoice:
+      required:
+        - city
+        - itemId
+        - itemType
+        - name
+        - quantity
+        - state
+        - street
+        - zipcode
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipcode:
+          type: string
+        itemType:
+          type: string
+        itemId:
+          type: integer
+          format: int32
+        unitPrice:
+          type: number
+        quantity:
+          type: integer
+          format: int32
+        subtotal:
+          type: number
+        tax:
+          type: number
+        processingFee:
+          type: number
+        total:
+          type: number
