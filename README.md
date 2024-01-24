@@ -1,4 +1,4 @@
-# This is my Netflix Pathways Bootcamp Repository
+# Netflix Pathways Bootcamp
 <img src="https://i.imgur.com/Nv8uUao.png" alt="Netflix" width="100%" height="300">
 
 This repository showcases my journey and accomplishments during a rigorous coding bootcamp. Throughout the program, I immersed myself in an intensive curriculum that was designed to equip me with essential programming skills and practical industry knowledge. 
